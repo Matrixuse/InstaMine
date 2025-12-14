@@ -1,11 +1,11 @@
-// src/controllers/userController.js
+
 const userModel = require('../models/userModel');
 const followModel = require('../models/followModel');
 const postModel = require('../models/postModel');
 
 const getProfile = (req, res) => {
     const { userId } = req.params;
-    const authUserId = req.userId; // Provided by auth middleware (optional for this public route)
+    const authUserId = req.userId;
 
     const user = userModel.findUserById(userId);
 
@@ -16,12 +16,12 @@ const getProfile = (req, res) => {
     const followersCount = followModel.getFollowerCount(userId);
     const followingCount = followModel.getFollowingCount(userId);
     
-    // Check if the authenticated user is following this profile
+
     const isFollowing = authUserId ? followModel.isFollowing(authUserId, userId) : false;
 
     const userPosts = postModel.findPostsByUserId(userId);
     
-    // Enrich user's posts for display on the profile page
+
     const enrichedPosts = userPosts.map(p => postModel.enrichPost(p, authUserId));
 
     res.json({
@@ -36,7 +36,7 @@ const getProfile = (req, res) => {
 
 const followUser = (req, res) => {
     const followingId = req.params.userId;
-    const followerId = req.userId; // Authenticated user
+    const followerId = req.userId;
 
     if (followerId === followingId) {
         return res.status(400).json({ message: 'Cannot follow yourself' });
@@ -55,7 +55,7 @@ const followUser = (req, res) => {
 
 const unfollowUser = (req, res) => {
     const followingId = req.params.userId;
-    const followerId = req.userId; // Authenticated user
+    const followerId = req.userId;
 
     if (followModel.removeFollow(followerId, followingId)) {
         res.json({ message: 'User unfollowed successfully' });

@@ -1,4 +1,4 @@
-// src/pages/ProfilePage.jsx
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { Loader } from 'lucide-react';
 import { api } from '../../api/apiService.js';
@@ -15,7 +15,7 @@ const ProfilePage = ({ navigate, profileUserId }) => {
         setLoading(true);
         setError(null);
         try {
-            // Need to pass token header for the mock backend to determine isFollowing status
+
             const data = await api.getProfile(profileUserId);
             setProfileData(data);
         } catch (e) {
@@ -39,7 +39,7 @@ const ProfilePage = ({ navigate, profileUserId }) => {
             } else {
                 await api.followUser(profileUserId);
             }
-            // Re-fetch profile to update follow status and counts
+
             await fetchProfile();
         } catch (e) {
             console.error('Follow toggle failed:', e);

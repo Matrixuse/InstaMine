@@ -1,4 +1,4 @@
-// src/pages/CreatePost.jsx
+
 import React, { useState } from 'react';
 import { Loader } from 'lucide-react';
 import { api } from '../../api/apiService.js';
@@ -22,7 +22,7 @@ const CreatePost = ({ navigate }) => {
 
         try {
             await api.createPost(imageUrl, caption);
-            navigate('feed'); // Go back to feed after successful post
+            navigate('feed');
         } catch (e) {
             setError(e.message || 'Failed to create post.');
         } finally {

@@ -1,8 +1,8 @@
-// src/models/postModel.js
-const { MOCK_DB, generateId } = require('../config/db');
-const userModel = require('./userModel'); // Used for enrichment
 
-// --- POSTS ---
+const { MOCK_DB, generateId } = require('../config/db');
+const userModel = require('./userModel');
+
+
 const createPost = (userId, imageUrl, caption) => {
     const newPost = {
         id: generateId(),
@@ -22,7 +22,7 @@ const findPostById = (postId) => {
 const findPostsByUserIds = (userIds) => {
     return MOCK_DB.posts
         .filter(p => userIds.includes(p.userId))
-        .sort((a, b) => b.timestamp - a.timestamp); // Sort by newest first
+        .sort((a, b) => b.timestamp - a.timestamp);
 };
 
 const findPostsByUserId = (userId) => {
@@ -31,7 +31,7 @@ const findPostsByUserId = (userId) => {
         .sort((a, b) => b.timestamp - a.timestamp);
 }
 
-// --- LIKES ---
+
 const findLikesByPostId = (postId) => {
     return MOCK_DB.likes.filter(l => l.postId === postId);
 };
@@ -54,7 +54,7 @@ const removeLike = (postId, userId) => {
     return MOCK_DB.likes.length < initialLength;
 };
 
-// --- COMMENTS ---
+
 const findCommentsByPostId = (postId) => {
     return MOCK_DB.comments
         .filter(c => c.postId === postId)
@@ -73,9 +73,7 @@ const addComment = (postId, userId, text) => {
     return newComment;
 };
 
-/**
- * Utility function to enrich a post object with derived data.
- */
+
 const enrichPost = (post, currentUserId) => {
     const user = userModel.findUserById(post.userId);
     const postLikes = findLikesByPostId(post.id);

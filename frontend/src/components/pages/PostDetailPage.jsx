@@ -1,4 +1,4 @@
-// src/pages/PostDetailPage.jsx
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { Heart, Loader, Send } from 'lucide-react';
 import { api } from '../../api/apiService.js';
@@ -16,7 +16,7 @@ const PostDetailPage = ({ navigate, postId }) => {
         setLoading(true);
         setError(null);
         try {
-            // Re-fetch the entire feed to get updated post data (simplification)
+
             const feed = await api.getFeed();
             const targetPost = feed.find(p => p.id === postId);
 
@@ -46,7 +46,7 @@ const PostDetailPage = ({ navigate, postId }) => {
             await fetchPostAndComments();
         } catch (e) {
             console.error('Failed to add comment:', e);
-            // Use custom modal for error display in production
+
         }
     };
 
@@ -62,7 +62,7 @@ const PostDetailPage = ({ navigate, postId }) => {
         try {
             if (post.isLiked) await api.unlikePost(postId);
             else await api.likePost(postId);
-            fetchPostAndComments(); // Refresh post status
+            fetchPostAndComments();
         } catch (e) {
             console.error('Like toggle failed:', e);
         }
@@ -71,7 +71,7 @@ const PostDetailPage = ({ navigate, postId }) => {
     return (
         <div className="bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-100">
             <div className="grid grid-cols-1 lg:grid-cols-5">
-                {/* Post Content */}
+                {}
                 <div className="lg:col-span-3 aspect-square bg-gray-100 overflow-hidden">
                     <img
                         src={post.imageUrl}
@@ -81,9 +81,9 @@ const PostDetailPage = ({ navigate, postId }) => {
                     />
                 </div>
 
-                {/* Comments and Details */}
+                {}
                 <div className="lg:col-span-2 flex flex-col h-full">
-                    {/* Post Header & Caption */}
+                    {}
                     <div className="p-4 border-b">
                         <div className="flex items-center mb-2">
                             <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-md font-bold text-gray-700 mr-2">
@@ -99,7 +99,7 @@ const PostDetailPage = ({ navigate, postId }) => {
                         <p className="text-gray-700 text-sm">{post.caption}</p>
                     </div>
 
-                    {/* Comments Area (Scrollable) */}
+                    {}
                     <div className="flex-grow overflow-y-auto p-4 space-y-3 max-h-80 lg:max-h-full">
                         {comments.length === 0 ? (
                             <p className="text-gray-500 text-sm text-center italic mt-4">Be the first to comment!</p>
@@ -118,9 +118,9 @@ const PostDetailPage = ({ navigate, postId }) => {
                         )}
                     </div>
 
-                    {/* Footer - Likes & Comment Input */}
+                    {}
                     <div className="p-4 border-t">
-                        {/* Interactive Like/Comment UI */}
+                        {}
                         <div className="flex items-center mb-3 space-x-4">
                             <button
                                 onClick={handleLike}
@@ -131,7 +131,7 @@ const PostDetailPage = ({ navigate, postId }) => {
                             <span className="font-semibold text-gray-800">{post.likesCount} likes</span>
                         </div>
 
-                        {/* Comment Input */}
+                        {}
                         <form onSubmit={handleCommentSubmit} className="flex space-x-2">
                             <input
                                 type="text"

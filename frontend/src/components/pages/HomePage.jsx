@@ -1,4 +1,4 @@
-// src/pages/HomePage.jsx
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { Loader, PlusSquare } from 'lucide-react';
 import { api } from '../../api/apiService.js';
@@ -30,7 +30,7 @@ const HomePage = ({ navigate }) => {
         fetchFeed();
     }, [fetchFeed]);
 
-    // Simple placeholder suggestions (backend may provide later)
+
     const suggestions = [
         { id: 'explorer_x', name: 'explorer_x' },
         { id: 'creative_cat', name: 'creative_cat' },

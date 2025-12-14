@@ -1,4 +1,4 @@
-// src/controllers/postController.js
+
 const postModel = require('../models/postModel');
 const followModel = require('../models/followModel');
 
@@ -17,16 +17,16 @@ const createPost = (req, res) => {
 const getFeed = (req, res) => {
     const currentUserId = req.userId;
 
-    // 1. Get IDs of users the current user follows
+
     const followingIds = followModel.getFollowingIds(currentUserId);
 
-    // 2. Include own posts
+
     followingIds.push(currentUserId);
 
-    // 3. Get posts created by those users
+
     const feedPosts = postModel.findPostsByUserIds(followingIds);
 
-    // 4. Enrich posts
+
     const enrichedFeed = feedPosts.map(p => postModel.enrichPost(p, currentUserId));
 
     res.json(enrichedFeed);
@@ -61,7 +61,7 @@ const unlikePost = (req, res) => {
 const getComments = (req, res) => {
     const { postId } = req.params;
     
-    // Note: Comments are enriched by the model to include username
+
     const enrichedComments = postModel.findCommentsByPostId(postId).map(c => {
         const commenter = require('../models/userModel').findUserById(c.userId);
         return {

@@ -1,17 +1,11 @@
-// src/components/posts/CommentSection.jsx
+
 import React, { useState } from 'react';
 import { Send } from 'lucide-react';
 import { api } from '../../api/apiService.js';
 import { useAuth } from '../../contexts/AuthContext.jsx';
-import Button from '../ui/Button.jsx'; // Path is already correct (../)
+import Button from '../ui/Button.jsx';
 
-/**
- * Displays comments and provides an input form for adding new comments.
- * @param {string} postId - The ID of the post being commented on.
- * @param {function} navigate - Function to navigate between views.
- * @param {Array<Object>} postComments - List of comments to display.
- * @param {function} refreshPostData - Callback to refresh the parent post's data after a new comment.
- */
+
 const CommentSection = ({ postId, navigate, postComments, refreshPostData }) => {
     const { isAuthenticated } = useAuth();
     const [newCommentText, setNewCommentText] = useState('');
@@ -25,10 +19,10 @@ const CommentSection = ({ postId, navigate, postComments, refreshPostData }) => 
         try {
             await api.addComment(postId, newCommentText);
             setNewCommentText('');
-            refreshPostData(); // Trigger parent to re-fetch post data and comments
+            refreshPostData();
         } catch (e) {
             console.error('Failed to add comment:', e);
-            // In a full app, display a custom error message here
+
         } finally {
             setCommentLoading(false);
         }
@@ -36,7 +30,7 @@ const CommentSection = ({ postId, navigate, postComments, refreshPostData }) => 
 
     return (
         <div className="flex flex-col h-full">
-            {/* Comments Area (Scrollable) */}
+            {}
             <div className="flex-grow overflow-y-auto p-4 space-y-3 max-h-80 lg:max-h-full">
                 {postComments.length === 0 ? (
                     <p className="text-gray-500 text-sm text-center italic mt-4">Be the first to comment!</p>
@@ -55,7 +49,7 @@ const CommentSection = ({ postId, navigate, postComments, refreshPostData }) => 
                 )}
             </div>
 
-            {/* Comment Input */}
+            {}
             {isAuthenticated && (
                 <div className="p-3 border-t bg-white">
                     <form onSubmit={handleCommentSubmit} className="flex items-center space-x-2">

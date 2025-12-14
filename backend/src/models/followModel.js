@@ -1,7 +1,7 @@
-// src/models/followModel.js
+
 const { MOCK_DB } = require('../config/db');
 
-// In a real app, these would involve JOINs and transactional integrity.
+
 
 const getFollowerCount = (userId) => {
     return MOCK_DB.follows.filter(f => f.followingId === userId).length;

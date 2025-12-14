@@ -1,8 +1,8 @@
-// src/components/posts/PostCard.jsx
+
 import React, { useState } from 'react';
 import { Heart, MessageSquare, Loader } from 'lucide-react';
-import { api } from '../../api/apiService.js'; // Added .js extension
-import { useAuth } from '../../contexts/AuthContext.jsx'; // Added .jsx extension
+import { api } from '../../api/apiService.js';
+import { useAuth } from '../../contexts/AuthContext.jsx';
 
 const timeAgo = (date) => {
     const seconds = Math.floor((new Date() - date) / 1000);
@@ -43,7 +43,7 @@ const PostCard = React.memo(({ post, navigate, refreshFeed }) => {
 
     return (
         <div className="bg-white border border-gray-100 rounded-xl shadow-sm mb-6 transition-all duration-300 hover:shadow-md overflow-hidden">
-            {/* Header */}
+            {}
             <div className="flex items-center p-4 border-b">
                 <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-lg font-bold text-gray-700 mr-3">
                     {username.charAt(0).toUpperCase()}
@@ -56,7 +56,7 @@ const PostCard = React.memo(({ post, navigate, refreshFeed }) => {
                 </p>
             </div>
 
-            {/* Image */}
+            {}
             <div className="w-full aspect-[4/3] bg-gray-100 overflow-hidden">
                 <img
                     src={imageUrl}
@@ -66,7 +66,7 @@ const PostCard = React.memo(({ post, navigate, refreshFeed }) => {
                 />
             </div>
 
-            {/* Actions */}
+            {}
             <div className="p-4 flex items-center justify-between">
                 <div className="flex items-center space-x-4">
                     <button
@@ -90,7 +90,7 @@ const PostCard = React.memo(({ post, navigate, refreshFeed }) => {
                 <p className="text-xs text-gray-400">{timeAgo(timestamp)}</p>
             </div>
 
-            {/* Caption */}
+            {}
             <div className="p-4 pt-0 border-t bg-white">
                 <p className="text-gray-700">
                     <span

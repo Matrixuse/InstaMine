@@ -1,8 +1,8 @@
-// src/controllers/authController.js
+
 const jwt = require('jsonwebtoken');
 const config = require('../config/config');
 const userModel = require('../models/userModel');
-const { mockCompare } = require('../config/db'); // Mock password comparison
+const { mockCompare } = require('../config/db');
 
 const generateToken = (userId, username) => {
     return jwt.sign({ userId, username }, config.JWT_SECRET, { expiresIn: config.JWT_EXPIRES_IN });
@@ -32,7 +32,7 @@ const login = (req, res, next) => {
 
     const user = userModel.findUserByUsername(username);
 
-    // Use mockCompare (or bcrypt.compare in production)
+
     if (!user || !mockCompare(password, user.passwordHash)) {
         return res.status(401).json({ message: 'Invalid credentials' });
     }

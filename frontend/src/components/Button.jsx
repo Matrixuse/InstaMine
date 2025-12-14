@@ -1,10 +1,8 @@
-// src/components/ui/Button.jsx
+
 import React from 'react';
 import { Loader } from 'lucide-react';
 
-/**
- * A reusable button component with built-in loading state and variants.
- */
+
 const Button = ({ children, onClick, loading, className = '', variant = 'primary', disabled = false, type = 'button' }) => {
     let baseStyles = 'px-4 py-2 font-semibold rounded-lg transition duration-200 shadow-md flex items-center justify-center disabled:opacity-60 disabled:cursor-not-allowed';
     let variantStyles = '';
@@ -23,7 +21,7 @@ const Button = ({ children, onClick, loading, className = '', variant = 'primary
             variantStyles = 'bg-green-500 text-white hover:bg-green-600';
             break;
         case 'link':
-            // Special case for icon buttons or text links without padding/background
+
             baseStyles = 'font-semibold transition duration-150 transform hover:scale-110 p-0';
             variantStyles = 'text-blue-500 hover:text-blue-700';
             break;

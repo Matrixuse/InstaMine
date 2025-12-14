@@ -1,4 +1,4 @@
-// src/pages/Auth/SignupPage.jsx
+
 import React, { useState } from 'react';
 import { api } from '../../../api/apiService.js';
 import { useAuth } from '../../../contexts/AuthContext.jsx';
@@ -17,7 +17,7 @@ const SignupPage = ({ navigate }) => {
         setLoading(true);
         try {
             await api.signup(username, password);
-            // Auto-login after successful signup
+
             const data = await api.login(username, password);
             handleLoginSuccess(data.token, data.userId, data.username);
             navigate('feed');

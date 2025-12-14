@@ -1,6 +1,6 @@
-// src/contexts/AuthContext.jsx
+
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import { api } from '../api/apiService.js'; // Added .js extension
+import { api } from '../api/apiService.js';
 
 const AuthContext = createContext(null);
 

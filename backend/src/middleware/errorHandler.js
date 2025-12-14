@@ -1,10 +1,8 @@
-// src/middleware/errorHandler.js
 
-/**
- * Global error handler middleware.
- */
+
+
 const errorHandler = (err, req, res, next) => {
-    console.error(err.stack); // Log error stack for debugging
+    console.error(err.stack);
 
     const statusCode = err.statusCode || 500;
     const message = err.message || 'An unexpected server error occurred.';
